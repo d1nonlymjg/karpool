@@ -61,14 +61,14 @@
 								 <div class="col-xs-12 col-xs-12 mt">
 									 <div class="input-field">
 										 <label for="from">Current City:</label>
-										 <input type="text" class="form-control" id="from-place" placeholder="University of Texas"/>
-									 </div>
+                                         <input id="autocomplete" placeholder="University of Texas"onFocus="geolocate()" type="text"></input>
+                                     </div>
 								 </div>
 
 								 <div class="col-xs-12 col-xs-12 mt">
 									 <div class="input-field">
 										 <label for="from">Destination City:</label>
-										 <input type="text" class="form-control" id="to-place" placeholder="Katy"/>
+										 <input type="text" class="form-control" id="to-place" id="autocomplete" placeholder="Enter Destination "onFocus="geolocate()"/>
 									 </div>
 								 </div>
 								</div>
@@ -211,6 +211,10 @@
 			<script src="assets/js/skel.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+
+            <script type="text/javascript" src="assets/js/add_auto_comp.js"></script>
+        <!-- Replace the value of the key parameter with your own API key. -->
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCu6JsZczHaIQWFXe4ND0sCjbGFxCDXZXI&libraries=places&callback=initAutocomplete"async defer></script>
 
 	</body>
 </html>
