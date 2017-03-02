@@ -5,7 +5,7 @@
 // parameter when you first load the API. For example:
 // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
 
-var placeSearch, autocomplete;
+var placeSearch, autocomplete, autocomplete2;
 var componentForm = {
   street_number: 'short_name',
   route: 'long_name',
@@ -18,14 +18,24 @@ var componentForm = {
 function initAutocomplete() {
   // Create the autocomplete object, restricting the search to geographical
   // location types.
-  autocomplete = new google.maps.places.Autocomplete(
-      /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
+  autocompleteStart = new google.maps.places.Autocomplete(
+      /** @type {!HTMLInputElement} */(document.getElementById('autocompleteStart')),
       {types: ['geocode']});
 
   // When the user selects an address from the dropdown, populate the address
   // fields in the form.
-  autocomplete.addListener('place_changed', fillInAddress);
-}
+  autocompleteStart.addListener('place_changed', function() {
+    fillInAddress(autocompleteStart, "");
+  });
+
+  autocompleteEnd = new google.maps.places.Autocomplete(
+    /** @type {!HTMLInputElement} */
+    (document.getElementById('autocompleteEnd')), {
+      types: ['geocode']
+    });
+
+   autocompleteEnd.addListener('place_changed', fillInAddress);
+  }
 
 function fillInAddress() {
   // Get the place details from the autocomplete object.
